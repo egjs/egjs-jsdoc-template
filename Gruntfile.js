@@ -3,9 +3,9 @@
  */
 module.exports = function (grunt) {
     var path = require('path');
-    var DEMO_PATH = 'demo/dist';
-    var DEMO_SAMPLE_PATH = 'demo/sample';
-    
+    var DIST_PATH = 'demo/dist';
+    var SRC_PATH = 'demo/sample';
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
@@ -16,7 +16,7 @@ module.exports = function (grunt) {
             demo: {
                 options: {
                     port: 8000,
-                    base: DEMO_PATH,
+                    base: DIST_PATH,
                     middleware: function (connect, options) {
                         return [
                             require('connect-livereload')(),
@@ -51,29 +51,42 @@ module.exports = function (grunt) {
                 tasks: ['jsdoc']
             },
 
-            demo: {
+            doc: {
                 files: ['demo/sample/**/*.js'],
                 tasks: ['demo']
             }
         },
 
         clean: {
-            demo: {
-                src: DEMO_PATH
+            doc: {
+                src: DIST_PATH
             }
         },
 
         jsdoc: {
-            demo: {
+            doc: {
                 src: [
-                    DEMO_SAMPLE_PATH + '/**/*.js',
-                    
+                    SRC_PATH + '/**/*.js',
+
                     // You can add README.md file for index page at documentations.
                     'README.md'
                 ],
                 options: {
                     verbose: true,
-                    destination: DEMO_PATH,
+                    destination: DIST_PATH,
+                    configure: 'conf.json',
+                    template: './',
+                    'private': false
+                }
+            },
+            /**
+             * egjs 빌드시 사용하는 옵션 
+             */
+            egjs: {
+                src: ['../egjs/src/**/*.js', 'README.md'],
+                options: {
+                    verbose: true,
+                    destination: DIST_PATH,
                     configure: 'conf.json',
                     template: './',
                     'private': false
@@ -91,12 +104,21 @@ module.exports = function (grunt) {
         copy: {
             css: {
                 src: 'static/styles/jaguar.css',
-                dest: DEMO_PATH + '/styles/jaguar.css'
+                dest: DIST_PATH + '/styles/jaguar.css'
             },
 
             js: {
                 src: 'static/scripts/main.js',
-                dest: DEMO_PATH + '/scripts/main.js'
+                dest: DIST_PATH + '/scripts/main.js'
+            },
+
+            plugin: {
+              files: [{
+                src: 'jsdoc-plugin/*.js',
+                dest: 'node_modules/grunt-jsdoc/node_modules/jsdoc/plugins/',
+                flatten : true,
+                expand : true
+              }]
             }
         }
     });
@@ -114,15 +136,24 @@ module.exports = function (grunt) {
     });
 
     // Definitions of tasks
-    grunt.registerTask('default', 'Watch project files', [
-        'demo',
-        'connect:demo',
-        'watch'
+    // grunt.registerTask('default', 'Watch project files', [
+    //     'demo',
+    //     'connect:demo',
+    //     'watch'
+    // ]);
+    
+
+    grunt.registerTask('default', 'Create documentations for yours', [
+        /*'less',*/
+        'clean:doc',
+        'copy:plugin',
+        'jsdoc:doc'
     ]);
 
-    grunt.registerTask('demo', 'Create documentations for demo', [
-        'less',
-        'clean:demo',
-        'jsdoc:demo'
+    grunt.registerTask('egjs', 'Create documentations for egjs', [
+        /*'less',*/
+        'clean:doc',
+        'copy:plugin',
+        'jsdoc:egjs'
     ]);
 };

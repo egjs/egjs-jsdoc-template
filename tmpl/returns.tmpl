@@ -72,9 +72,20 @@ returns.forEach(function (ret, i) {
                 }
             ?>
             </td>
-            <td class="description last"><?js= ret.description ?><?js if (ret.subReturns) { ?>
-                <?js= self.partial('returns.tmpl', ret.subReturns) ?>
-            <?js } ?></td>
+            <td class="description last">
+                <?js if (ret.description) { 
+                    var desc = self.egjsDocHelper.getDescriptionByLang(ret.description);
+                    var enDesc = desc[0];
+                    var koDesc = desc[1];
+                ?>
+                <div class="en"><?js= enDesc ?></div>
+                <div class="ko"><?js= koDesc || enDesc ?></div>
+                <?js } ?>
+
+                <?js if (ret.subReturns) { ?>
+                    <?js= self.partial('returns.tmpl', ret.subReturns) ?>
+                <?js } ?>
+            </td>
         </tr>
     <?js }); ?>
     </tbody>

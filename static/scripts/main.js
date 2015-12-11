@@ -1,5 +1,23 @@
 $(function () {
+    var $wrap = $("#wrap"),
+        $langToggle = $("#toggle");
+
     // Search Items
+    if (location.search.replace("?","") === "en" || 
+        (config.defaultLanguage && config.defaultLanguage === "en")) {
+        $wrap.addClass("toggle");
+    }
+
+    $langToggle.on("click",function(){
+        if ($wrap.hasClass("toggle")) {
+            $wrap.removeClass("toggle");
+            $langToggle.text("English");
+        } else {
+            $wrap.addClass("toggle");
+            $langToggle.text("한국어");
+        }
+    });
+
     $('#search').on('keyup', function (e) {
         var value = $(this).val();
         var $el = $('.navigation');
@@ -31,15 +49,21 @@ $(function () {
 
     // Show an item related a current documentation automatically
     var filename = $('.page-title').data('filename').replace(/\.[a-z]+$/, '');
-    var $currentItem = $('.navigation .item[data-name*="' + filename + '"]:eq(0)');
-
+    var $currentItem = $('.navigation .item[data-name="' + filename + '"]:eq(0)');
+    // if ($currentItem.length) {
+    //     $currentItem
+    //         .remove()
+    //         .prependTo('.navigation .list')
+    //         .show()
+    //         .find('.itemMembers')
+    //             .show();
+    // }
+    // Retain a menu order 2015.04.29. jongmoon.
     if ($currentItem.length) {
         $currentItem
-            .remove()
-            .prependTo('.navigation .list')
             .show()
             .find('.itemMembers')
-                .show();
+                .slideDown();
     }
 
     // Auto resizing on navigation

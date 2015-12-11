@@ -8,74 +8,22 @@ var self = this;
         <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
     </div>
     <ul class="list">
-    <?js
-    this.nav.forEach(function (item) {
+    <?js if ( Object.keys(self.nav).length === 1 && self.nav.hasOwnProperty("Global") ) { ?>
+        <!-- Non Grouping Version -->
+        <?js self.nav["Global"].forEach(function (item) {?>
+            <?js= self.partial('navigation-item.tmpl', item) ?>
+        <?js }); ?>
+    <?js } else { ?>
+    <?js for (var groupName in self.nav) { ?>
+        <!-- Grouping Version -->
+        <ul class="group">
+        <span><?js=groupName?></span>
+        <?js self.nav[groupName].forEach(function (item) {?>
+            <?js= self.partial('navigation-item.tmpl', item) ?>
+        <?js }); ?>
+        </ul>
+    <?js };
+    }
     ?>
-        <li class="item" data-name="<?js= item.longname ?>">
-            <span class="title">
-                <?js= self.linkto(item.longname, item.longname) ?>
-                <?js if (item.type === 'namespace') { ?>
-                <span class="static">static</span>
-                <?js } ?>
-            </span>
-            <ul class="members itemMembers">
-            <?js
-            if (item.members.length) {
-            ?>
-            <span class="subtitle">Members</span>
-            <?js
-                item.members.forEach(function (v) {
-            ?>
-                <li data-name="<?js= v.longname ?>"><?js= self.linkto(v.longname, v.name) ?></li>
-            <?js
-                });
-            }
-            ?>
-            </ul>
-            <ul class="typedefs itemMembers">
-            <?js
-            if (item.typedefs.length) {
-            ?>
-            <span class="subtitle">Typedefs</span>
-            <?js
-                item.typedefs.forEach(function (v) {
-            ?>
-                <li data-name="<?js= v.longname ?>"><?js= self.linkto(v.longname, v.name) ?></li>
-            <?js
-                });
-            }
-            ?>
-            </ul>
-            <ul class="methods itemMembers">
-            <?js
-            if (item.methods.length) {
-            ?>
-            <span class="subtitle">Methods</span>
-            <?js
-
-                item.methods.forEach(function (v) {
-            ?>
-                <li data-name="<?js= v.longname ?>"><?js= self.linkto(v.longname, v.name) ?></li>
-            <?js
-                });
-            }
-            ?>
-            </ul>
-            <ul class="events itemMembers">
-            <?js
-            if (item.events.length) {
-            ?>
-            <span class="subtitle">Events</span>
-            <?js
-                item.events.forEach(function (v) {
-            ?>
-                <li data-name="<?js= v.longname ?>"><?js= self.linkto(v.longname, v.name) ?></li>
-            <?js
-                });
-            }
-            ?>
-            </ul>
-        </li>
-    <?js }); ?>
     </ul>
 </div>

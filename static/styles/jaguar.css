@@ -102,6 +102,7 @@ li {
 .main {
   padding: 20px 20px;
   margin-left: 250px;
+  max-width: 750px;
 }
 .main .page-title {
   display: none;
@@ -118,8 +119,8 @@ li {
 }
 .main h3 {
   font-weight: bold;
-  font-size: 12px;
-  margin: 5px 0;
+  font-size: 1.2em;
+  margin: 10px 0;
 }
 .main h4 {
   font-weight: bold;
@@ -127,7 +128,7 @@ li {
 }
 .main h5 {
   font-weight: bold;
-  font-size: 12px;
+  font-size: 0.8em;
 }
 .main dd {
   font-size: 12px;
@@ -187,21 +188,8 @@ li {
   margin-top: 10px;
   font-size: 13px;
 }
-.main .description ul,
-.main .description ol {
-  margin-bottom: 15px;
-}
 .main .description p {
   font-size: 13px;
-}
-.main .description h2 {
-  margin-top: 30px;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #efefef;
-}
-.main .description pre {
-  margin: 10px 0;
 }
 .main .tag-source {
   font-size: 12px;
@@ -268,9 +256,6 @@ li {
   font-weight: normal;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
-.main .nameContainer h4 .type-signature.type a {
-  color: #fff;
-}
 .main pre {
   font-size: 11px;
 }
@@ -327,6 +312,13 @@ li {
   padding-bottom: 10px;
   border-bottom: 1px solid #e1e1e1;
 }
+
+.main .readme h3 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
 .main .readme li {
   font-size: 0.9em;
   margin-bottom: 10px;
@@ -350,4 +342,125 @@ footer {
   font-family: "freight-text-pro", Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 0.8em;
   color: gray;
+}
+
+#wrap.toggle .ko{
+  display: none;
+}
+#wrap.toggle .en{
+  display: block;
+}
+
+#wrap .ko{
+  display: block;
+}
+#wrap .en{
+  display: none;
+}
+
+#toggle{
+   float: right;
+}
+
+#toggle {
+  display: inline-block;
+  border-radius: 3px;
+  background-color: #ff8c00 !important;
+  color: #fff;
+  font-size: 0.7em;
+  padding: 2px 4px;
+  margin-right: 8px;
+  border: 0px;
+}
+
+/** Navigation Customize */
+.navigation .list .group {
+  border: 1px dashed rgba(150, 130, 130, 0.5);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.navigation .group span {
+  font-size: 0.9em;
+  color: #777;
+}
+
+.navigation .group li.item {
+  margin: 5px 0 5px 20px;
+  padding: 5px;
+  border-bottom: 1px solid #333;
+}
+
+/** Parameter CSS */
+.main article ul.parameters {
+  1margin: 0 0 20px 20px;
+  margin: 10px 0;
+  background: #eee;
+  1border: 1px solid #ccc;
+  1margin: 0 auto 15px;
+  border-radius: 3px;
+  color: #333;
+  text-shadow: 0 1px 0 #fff;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.main article ul.parameters ul {
+  margin-bottom: 0;
+  margin-left: 20px;
+
+  border: 0px;
+}
+
+.main article ul.parameters ul.parameters li:first-child {
+  border-top: 1px solid #CCC;
+}
+
+.main article ul.parameters li {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 20px;
+  line-height: 20px;
+  list-style-type: none;
+  1background: url(../images/bullet.png) no-repeat 0 10px;
+  border-bottom: 1px solid #CCC;
+}
+
+.main article ul.parameters li .optional {
+  1float: left;
+  border-radius: 3px;
+  background-color: #ddd!important;
+  font-size: 0.7em;
+  padding: 2px 4px;
+  margin-right: 5px;
+  color: gray;
+}
+
+table.support {
+    background: #fff;
+    margin-bottom: 1.25rem;
+    border: solid 1px #ddd;
+}
+
+table.support thead {
+    background: #f5f5f5;
+}
+
+table.support th {
+    display: table-cell;
+    line-height: 1.125rem;
+    padding: 0.5rem 0.625rem 0.625rem;
+    font-weight: bold;
+    color: #222;
+}
+
+table.support tr:nth-of-type(even) {
+    background: #f9f9f9;
+}
+
+
+table.support td {
+   padding-left : 0.625rem;
 }

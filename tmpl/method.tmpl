@@ -8,7 +8,7 @@ var self = this;
             <?js if (data.inherited || data.inherits) { ?>
                 <span class="inherited"><?js= this.linkto(data.inherits, 'inherited') ?></span>
             <?js } ?>
-            <?js= data.attribs + (kind === 'class' ? 'new ' : '') + (data.scope === 'static' ? longname : name) + (kind !== 'event' ? data.signature : '') ?>
+            <?js= data.attribs + (kind === 'class' ? 'new ' : '') + (data.scope === 'static' ? longname : name) + (kind !== 'event' && kind !== 'hook' ? data.signature : '') ?>
         </h4>
     
         <?js if (data.meta) {?>
@@ -25,8 +25,13 @@ var self = this;
 <dd>
     
     <?js if (data.description) { ?>
-    <div class="description">
+    <div class="description en">
         <?js= data.description ?>
+    </div>
+    <?js } ?>
+    <?js if (data.ko) { ?>
+    <div class="description ko">
+        <?js= data.ko ?>
     </div>
     <?js } ?>
 
@@ -47,8 +52,6 @@ var self = this;
     <?js if (data.params && params.length) { ?>
         <?js= this.partial('params.tmpl', params) ?>
     <?js } ?>
-    
-    <?js= this.partial('details.tmpl', data) ?>
     
     <?js if (data.fires && fires.length) { ?>
     <h5>Fires:</h5>
@@ -84,7 +87,7 @@ var self = this;
     } } ?>
     
     <?js if (data.returns && returns.length) { ?>
-    <h5>Returns:</h5>
+    <?js if (returns.length >= 1) { ?><h5>Returns:</h5><?js } ?>
     <?js= self.partial('returns.tmpl', data.returns) ?>
     <?js } ?>
     
@@ -92,4 +95,6 @@ var self = this;
         <h5>Example<?js= examples.length > 1? 's':'' ?></h5>
         <?js= this.partial('examples.tmpl', examples) ?>
     <?js } ?>
+
+    <?js= this.partial('details.tmpl', data) ?>
 </dd>

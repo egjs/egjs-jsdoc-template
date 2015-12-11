@@ -2,7 +2,7 @@
 	"tags": {
 		"allowUnknownTags" : true
 	},
-	"plugins": ["plugins/markdown"],
+	"plugins": ["plugins/markdown", "plugins/ko", "plugins/codepen", "plugins/group", "plugins/hook", "plugins/support"],
 	"templates": {
 		"cleverLinks": true,
 		"monospaceLinks": true,
@@ -24,7 +24,8 @@
 			"description": "",
 			"keyword": ""
 		},
-		"linenums": false
+		"linenums": true,
+		"defaultLanguage" : "ko"
 	},
 	"markdown": {
 		"parser": "gfm",

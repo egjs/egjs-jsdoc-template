@@ -97,9 +97,19 @@
                 </td>
             <?js } ?>
             
-            <td class="description last"><?js= prop.description ?><?js if (prop.subprops) { ?>
-                <h6>Properties</h6><?js= self.partial('properties.tmpl', prop.subprops) ?>
-            <?js } ?></td>
+            <td class="description last">
+                <?js if (prop.description) { 
+                    var desc = self.egjsDocHelper.getDescriptionByLang(prop.description);
+                    var enDesc = desc[0];
+                    var koDesc = desc[1];
+                ?>
+                <div class="en"><?js= enDesc ?></div>
+                <div class="ko"><?js= koDesc || enDesc ?></div>
+                <?js } ?>
+
+                <?js if (prop.subprops) { ?>
+                    <h6>Properties</h6><?js= self.partial('properties.tmpl', prop.subprops) ?>
+                <?js } ?></td>
         </tr>
 	
 	<?js }); ?>
