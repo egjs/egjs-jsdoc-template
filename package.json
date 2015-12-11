@@ -22,7 +22,8 @@
     "jsdoc",
     "jsdoc3",
     "jaguar.js",
-    "template"
+    "template",
+    "egjs"
   ],
   "author": "NAVER Corp",
   "license": "MIT",
