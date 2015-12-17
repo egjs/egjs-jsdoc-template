@@ -25,7 +25,7 @@ jaguar-jsdoc 과 구분되는 egjs-jsdoc-template 의 기능은 다음과 같다
 ## Project Setting
 grunt-cli 를 각자 global로 설치 후, 다음 명령어를 이용하여 프로젝트를 설정한다.
 ```
-git clone http://사용자아이디@yobi.navercorp.com/Front-End/egjs-jsdoc-template
+npm installl egjs-jsdoc-template
 cd egjs-jsdoc-template
 npm install
 ```
