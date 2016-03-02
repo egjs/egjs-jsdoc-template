@@ -1,10 +1,12 @@
 {
   "name": "egjs-jsdoc-template",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "egjs template for JSDoc 3",
   "main": "Gruntfile.js",
+  /** hack: jsdoc dependency, if not specified, npm3 makes an error in egjs */
   "dependencies": {
-    "taffydb": "https://github.com/hegemonic/taffydb/tarball/7d100bcee0e997ee4977e273cdce60bd8933050e"
+    "taffydb": "https://github.com/hegemonic/taffydb/tarball/7d100bcee0e997ee4977e273cdce60bd8933050e",
+    "marked": "~0.3.4"
   },
   "devDependencies": {
     "connect-livereload": "~0.3.2",
