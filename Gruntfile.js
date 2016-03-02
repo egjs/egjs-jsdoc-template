@@ -119,6 +119,17 @@ module.exports = function (grunt) {
                 flatten : true,
                 expand : true
               }]
+            },
+            /*
+             * Alternative task to apply on changed module dir in NPM3
+             */
+            pluginForNewNPM: {
+              files: [{
+                src: 'jsdoc-plugin/*.js',
+                dest: 'node_modules/jsdoc/plugins/',
+                flatten : true,
+                expand : true
+              }]
             }
         }
     });
@@ -147,6 +158,7 @@ module.exports = function (grunt) {
         /*'less',*/
         'clean:doc',
         'copy:plugin',
+        'copy:pluginForNewNPM',
         'jsdoc:doc'
     ]);
 
@@ -154,6 +166,7 @@ module.exports = function (grunt) {
         /*'less',*/
         'clean:doc',
         'copy:plugin',
+        'copy:pluginForNewNPM',
         'jsdoc:egjs'
     ]);
 };
