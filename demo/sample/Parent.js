@@ -3,8 +3,8 @@
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
  * @class
  * @codepen {"id":"rVOpPK", "ko":"플리킹 기본 예제", "en":"Flicking default example", "collectionId":"ArxyLK", "height" : 403}
- * @support {"ie": "7+", "ch" : "latest", "ff" : "latest",  "sf" : "latest", "ios" : "7+", "an" : "2.3+ (except 3.0)", "n-ios" : "latest", "n-an" : "latest" }
- * @group Y
+ * @support {"ie": "7+", "ch" : "latest", "ff" : "latest",  "sf" : "latest", "edge" : "latest", "ios" : "7+", "an" : "2.3+ (except 3.0)", "n-ios" : "latest", "n-an" : "latest"}
+ * @group GroupY
  */
 var Parent = function () {
 };
