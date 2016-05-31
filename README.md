@@ -7,6 +7,10 @@ jsdoc3 기반의 템플릿 중 [jaguar-jsdoc](https://github.com/davidshimjs/jag
 >
 > publish.js 에서 exports 된 ```publish``` 함수가 template 진입점이며, jsdoc 에서 파싱된 데이터(TAFFY type)를 파라미터로 전달 받는다.
 
+## 적용 사례
+
+[egjs API](http://naver.github.io/egjs/latest/doc/)
+
 ## 목적
   1. 기능 및 UI 를 egjs API 문서를 표현하는데 보다 최적화된 형태로 변경한다.
   2. jsdoc3 기반으로 문서 API 를 작성하고자 하는 사내 모든 분들 중 egjs 와 동일하거나 유사한 기능이 필요한 분들을 위한 레퍼런스가 된다.
