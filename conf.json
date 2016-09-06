@@ -24,12 +24,15 @@
 			"description": "",
 			"keyword": ""
 		},
+		"link": {
+			"canonical": ""/*Representative URL*/
+		},
 		"linenums": true,
 		"defaultLanguage" : "ko"
 	},
 	"markdown": {
 		"parser": "gfm",
 		"hardwrap": true,
-		"tags": ["examples"]
+		"tags": ["examples", "ko"]
 	}
 }
