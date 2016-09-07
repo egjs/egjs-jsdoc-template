@@ -2,22 +2,30 @@ $(function () {
     var $wrap = $("#wrap"),
         $langToggle = $("#toggle");
 
-    // Search Items
-    if (location.search.replace("?","") === "en" || 
-        (config.defaultLanguage && config.defaultLanguage === "en")) {
-        $wrap.addClass("toggle");
-    }
+    // initial language
+    setLanguage(getUserLanguage());
 
     $langToggle.on("click",function(){
-        if ($wrap.hasClass("toggle")) {
+        $wrap.hasClass("toggle") ? setLanguage("ko") : setLanguage("en"); 
+    });
+
+    function setLanguage(langCode) {
+        if (langCode.indexOf("ko") === 0) {
+            //Set Korean
             $wrap.removeClass("toggle");
             $langToggle.text("English");
         } else {
+            //Set English
             $wrap.addClass("toggle");
             $langToggle.text("한국어");
         }
-    });
+        localStorage.setItem("egjs-api-language", langCode);
+    }
 
+    function getUserLanguage() {
+        return localStorage.getItem("egjs-api-language") || navigator.language || "";
+    }
+    
     $('#search').on('keyup', function (e) {
         var value = $(this).val();
         var $el = $('.navigation');
