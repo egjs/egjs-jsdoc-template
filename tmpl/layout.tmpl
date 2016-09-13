@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title><?js= ((env.conf.templates.meta && env.conf.templates.meta.title) || title) ?></title>
+    <title><?js= (title + (env.conf.templates.meta && env.conf.templates.meta.title && " | ") + (env.conf.templates.meta && env.conf.templates.meta.title)) ?></title>
     <?js if (env.conf.templates.meta) { ?>
     <?js if (env.conf.templates.meta.description) { ?><meta name="description" content="<?js= env.conf.templates.meta.description ?>" /><?js } ?>
     <?js if (env.conf.templates.meta.keyword) { ?>
