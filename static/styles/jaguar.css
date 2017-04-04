@@ -99,6 +99,9 @@ li {
 .navigation li.item .itemMembers {
   display: none;
 }
+.navigation li.item .expends {
+  display: block;
+}
 .main {
   padding: 20px 20px;
   margin-left: 250px;
