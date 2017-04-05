@@ -503,7 +503,6 @@ exports.publish = function(taffyData, opts, tutorials) {
     view.members = members; //@davidshimjs: To make navigation for customizing
     view.isIgnore = isIgnore;
     view.shortPath = shortPath;
-    view.namespace = namespace;
     view.expendsItemMembers = expendsItemMembers;
 
     view.egjsDocHelper = egjsDocHelper;
