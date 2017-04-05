@@ -66,7 +66,11 @@ returns.forEach(function (ret, i) {
             <?js
                 if (ret.type && ret.type.names) {
                     ret.type.names.forEach(function(name, i) { ?>
+                    	<?js if(self.isIgnore(name)) { ?>
+                    	<?js= name ?>
+                    	<?js } else { ?>
                         <?js= self.linkto(name, self.htmlsafe(name)) ?>
+                        <?js } ?>
                         <?js if (i < ret.type.names.length-1) { ?> | <?js } ?>
                     <?js }); 
                 }

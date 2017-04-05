@@ -2,6 +2,7 @@
 var item = obj;
 var self = this;
 ?>
+<?js if(!self.isIgnore(item.longname)) { ?>
 <li class="item" data-name="<?js= item.longname ?>">
     <span class="title">
         <?js= self.linkto(item.longname, item.longname) ?>
@@ -9,7 +10,7 @@ var self = this;
         <span class="static">static</span>
         <?js } ?>
     </span>
-    <ul class="members itemMembers">
+    <ul class="members itemMembers<?js= self.expendsItemMembers ? " expends" : "" ?>">
     <?js
     if (item.members.length) {
     ?>
@@ -23,7 +24,7 @@ var self = this;
     }
     ?>
     </ul>
-    <ul class="typedefs itemMembers">
+    <ul class="typedefs itemMembers<?js= self.expendsItemMembers ? " expends" : "" ?>">
     <?js
     if (item.typedefs.length) {
     ?>
@@ -37,7 +38,7 @@ var self = this;
     }
     ?>
     </ul>
-    <ul class="methods itemMembers">
+    <ul class="methods itemMembers<?js= self.expendsItemMembers ? " expends" : "" ?>">
     <?js
     if (item.methods.length) {
     ?>
@@ -52,7 +53,7 @@ var self = this;
     }
     ?>
     </ul>
-    <ul class="events itemMembers">
+    <ul class="events itemMembers<?js= self.expendsItemMembers ? " expends" : "" ?>">
     <?js
     if (item.events.length) {
     ?>
@@ -70,7 +71,7 @@ var self = this;
     <?js
     if (item.hooks && item.hooks.length) {
     ?>
-    <ul class="hooks itemMembers">
+    <ul class="hooks itemMembers<?js= self.expendsItemMembers ? " expends" : "" ?>">
     <span class="subtitle">Hooks</span>
     <?js
         item.hooks.forEach(function (v) {
@@ -86,3 +87,4 @@ var self = this;
     ?>
 
 </li>
+<?js } ?>

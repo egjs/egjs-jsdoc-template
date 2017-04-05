@@ -15,7 +15,7 @@
     <h2><?js if (doc.ancestors && doc.ancestors.length) { ?>
         <span class="ancestors"><?js= doc.ancestors.join('') ?></span>
     <?js } ?>
-    <?js= doc.name ?>
+    <?js= doc.longname ?>
     <?js if (doc.variation) { ?>
         <sup class="variation"><?js= doc.variation ?></sup>
     <?js } ?></h2>
@@ -79,7 +79,13 @@
         <h3 class="subsection-title">Extends</h3>
 
         <ul><?js doc.augments.forEach(function(a) { ?>
-            <li><?js= self.linkto(a, a) ?></li>
+            <li>
+            	<?js if(self.isIgnore(a)) { ?>
+            	<?js= a?>
+            	<?js } else { ?>
+            	<?js= self.linkto(a, a) ?>
+            	<?js } ?>
+            </li>
         <?js }); ?></ul>
     <?js } ?>
 

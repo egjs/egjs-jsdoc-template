@@ -30,6 +30,10 @@
 		"linenums": true,
 		"defaultLanguage" : "ko"
 	},
+	"opts": {
+		"ignores": [],
+		"expendsItemMembers": false
+	},
 	"markdown": {
 		"parser": "gfm",
 		"hardwrap": true,

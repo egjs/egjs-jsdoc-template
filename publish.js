@@ -14,8 +14,19 @@ var template = require('jsdoc/template'),
     data,
     view,
     outdir = env.opts.destination,
-    DEFAULT_GROUP_NAME = "Global";
+    DEFAULT_GROUP_NAME = "Global",
+    namespace = env.opts.namespace,
+    ignores = env.opts.ignores || [],
+	expendsItemMembers = env.opts.expendsItemMembers || false;
 var egjsDocHelper = require('./egjsDocHelper.js');
+
+function isIgnore(name) {
+    return ignores.indexOf(name) > -1;
+}
+
+function shortPath(filePath) {
+    return path.parse(filePath).base;
+}
 
 function find(spec) {
     return helper.find(data, spec);
@@ -118,6 +129,10 @@ function getPathFromDoclet(doclet) {
 }
 
 function generate(title, docs, filename, resolveLinks) {
+    if (isIgnore(path.parse(filename).name)) {
+        return;
+    }
+
     resolveLinks = resolveLinks === false ? false : true;
 
     var docData = {
@@ -486,6 +501,10 @@ exports.publish = function(taffyData, opts, tutorials) {
     view.tutoriallink = tutoriallink;
     view.htmlsafe = htmlsafe;
     view.members = members; //@davidshimjs: To make navigation for customizing
+    view.isIgnore = isIgnore;
+    view.shortPath = shortPath;
+    view.expendsItemMembers = expendsItemMembers;
+
     view.egjsDocHelper = egjsDocHelper;
 
     // once for all
