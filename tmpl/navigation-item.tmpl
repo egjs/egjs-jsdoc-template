@@ -47,7 +47,7 @@ var self = this;
 
         item.methods.forEach(function (v) {
     ?>
-        <li data-name="<?js= v.longname ?>"><?js= self.linkto(v.longname, v.name) ?></li>
+        <li data-name="<?js= v.longname ?>"><?js= self.linkto(v.longname, v.name) ?><?js if (v.inherited) { ?> <img src="img/i.png" width="16" title="inherited" alt="inherited"><?js } ?></li>
     <?js
         });
     }
