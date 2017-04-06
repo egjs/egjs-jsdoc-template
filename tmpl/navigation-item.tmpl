@@ -47,7 +47,7 @@ var self = this;
 
         item.methods.forEach(function (v) {
     ?>
-        <li data-name="<?js= v.longname ?>"><?js= self.linkto(v.longname, v.name) ?><?js if (v.inherited) { ?> <img src="img/i.png" width="16" title="inherited" alt="inherited"><?js } ?></li>
+        <li data-name="<?js= v.longname ?>"><?js= self.linkto(v.longname, v.name) ?><?js if (v.inherited) { ?> <img src="img/i.png" width="14" title="inherited" alt="inherited"><?js } ?></li>
     <?js
         });
     }
@@ -85,6 +85,7 @@ var self = this;
     <?js
     }
     ?>
+    <span class="title" style="margin-top:10px"><a href="index.html">readme</a></span>
 
 </li>
 <?js } ?>
