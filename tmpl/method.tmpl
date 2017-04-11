@@ -24,16 +24,20 @@ var self = this;
 </dt>
 <dd>
     
-    <?js if (data.description) { ?>
-    <div class="description en">
-        <?js= data.description ?>
-    </div>
-    <?js } ?>
-    <?js if (data.ko) { ?>
-    <div class="description ko">
-        <?js= data.ko ?>
-    </div>
-    <?js } ?>
+    <?js if (data.kind === "class") { ?>
+	<div class="description en">
+		<?js= data.classdesc ?>
+	</div>
+	<?js } else { ?>
+	<div class="description en">
+		<?js= data.description ?>
+	</div>
+	<?js } ?>
+	<?js if (data.ko) { ?>
+	<div class="description ko">
+		<?js= data.ko ?>
+	</div>
+	<?js } ?>
 
     <?js if (kind === 'event' && data.type && data.type.names) {?>
         <h5>Type:</h5>

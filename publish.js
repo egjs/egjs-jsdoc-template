@@ -77,7 +77,7 @@ function addSignatureParams(f) {
 }
 
 function addSignatureReturns(f) {
-    var returnTypes = helper.getSignatureReturns(f);
+    var returnTypes = egjsDocHelper.getSignatureReturns(f, ignores);
 
     f.signature = '<span class="signature">'+(f.signature || '') + '</span>';
 
