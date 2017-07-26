@@ -2,12 +2,20 @@
 var self = this;
 ?>
 <div class="navigation">
-    <h3 class="applicationName"><a href="//naver.github.io/egjs/"><?js= env.conf.templates.applicationName ?></a></h3>
+    <h3 class="applicationName">
+        <a href="//naver.github.io/egjs/"><img style="width:40px; height:20px;" src="img/type_white.svg"/></a>
+        <a href="//naver.github.io/egjs-<?js= env.conf.templates.applicationName.replace("eg.","").toLocaleLowerCase() ?>/"><?js= env.conf.templates.applicationName.replace("eg.","") ?></a>
+    </h3>
 
     <div class="search">
         <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
     </div>
     <ul class="list">
+        <li class="item">
+            <span class="title">
+                <a href="index.html">README</a>
+            </span>
+        </li>
     <?js if ( Object.keys(self.nav).length === 1 && self.nav.hasOwnProperty("Global") ) { ?>
         <!-- Non Grouping Version -->
         <?js self.nav["Global"].forEach(function (item) {?>

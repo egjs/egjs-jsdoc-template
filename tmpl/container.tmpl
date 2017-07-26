@@ -13,15 +13,17 @@
 
 <header>
     <h2><?js if (doc.ancestors && doc.ancestors.length) { ?>
-        <span class="ancestors"><?js= doc.ancestors.join('') ?></span>
+        <span class="ancestors">eg<?js= doc.ancestors.join("") ?></span>
     <?js } ?>
-    <?js= doc.longname ?>
+    <?js if (doc.longname) { ?>
+        <span><?js= doc.longname.replace(new RegExp("^eg\.Axes\."), "") ?></span>
+    <?js } ?>    
     <?js if (doc.variation) { ?>
         <sup class="variation"><?js= doc.variation ?></sup>
     <?js } ?></h2>
     <button id="toggle">
         <?js if (env.conf.templates.defaultLanguage === 'en') { ?>
-            한국어
+            Korean
         <?js } else { ?>
             English
         <?js } ?>
