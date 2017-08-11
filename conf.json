@@ -25,7 +25,8 @@
 			"keyword": ""
 		},
 		"link": {
-			"canonical": ""/*Representative URL*/
+			"canonical": ""/*Representative URL*/,
+			"home": "https://naver.github.io/egjs/"
 		},
 		"linenums": true,
 		"defaultLanguage" : "ko"
