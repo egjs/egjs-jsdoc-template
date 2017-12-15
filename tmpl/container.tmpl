@@ -16,7 +16,7 @@
         <span class="ancestors">eg<?js= doc.ancestors.join("") ?></span>
     <?js } ?>
     <?js if (doc.longname) { ?>
-        <span><?js= doc.longname.replace(new RegExp("^eg\.[^\.]*\."), "") ?></span>
+        <span><?js= doc.longname.replace(/^eg\.[^\.]*\./g, "") ?></span>
     <?js } ?>    
     <?js if (doc.variation) { ?>
         <sup class="variation"><?js= doc.variation ?></sup>
