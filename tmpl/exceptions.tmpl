@@ -1,30 +1,54 @@
 <?js
-    var data = obj;
+    var egjsDocHelper = this.egjsDocHelper;
+    var exceptions = obj;
+    var hasType = exceptions.some(function(excep) {return !!excep.type});
+    var hasDesc = exceptions.some(function(excep) {return !!excep.description});
+    var onlyType = hasType && !hasDesc;
+
+    exceptions = exceptions.map(function(excep) {
+        var descriptions = egjsDocHelper.getDescriptionByLang(excep.description || "");
+        var en = descriptions[0];
+        var ko = descriptions[1] || en;
+        var type = (excep.type || {names: []}).names.join(" | ");
+        return {
+            type: type,
+            en: en,
+            ko: ko
+        };
+    });
 ?>
-<?js if (data.description && data.type && data.type.names) { ?>
-<dl>
-    <dt>
-        <div class="param-desc">
-        <?js= data.description ?>
-        </div>
-    </dt>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                <?js= this.partial('type.tmpl', data.type.names) ?>
-            </dd>
-        </dl>
-    </dt>
-</dl>
-<?js } else { ?>
-    <div class="param-desc">
-    <?js if (data.description) { ?>
-        <?js= data.description ?>
-    <?js } else if (data.type && data.type.names) { ?>
-        <?js= this.partial('type.tmpl', data.type.names) ?>
-    <?js } ?>
-    </div>
-<?js } ?>
+<table class="params">
+    <thead>
+        <tr>
+            <?js if (hasType) { ?>
+                <?js if (onlyType) { ?>
+                    <th class="last">Type</th>
+                <?js } else { ?>
+                    <th>Type</th>
+                <?js } ?>
+            <?js } ?>
+            <?js if (hasDesc) { ?>
+                <th class="last">Description</th>
+            <?js } ?>
+        </tr>
+    </thead>
+    <tbody>
+        <?js exceptions.forEach(function(excep) { ?>
+            <tr>
+                <?js if (hasType) { ?>
+                    <?js if (onlyType) { ?>
+                        <td class="type last"><?js= excep.type ?></td>
+                    <?js } else { ?>
+                        <td class="type"><?js= excep.type ?></td>
+                    <?js } ?>
+                <?js } ?>
+                <?js if (hasDesc) { ?>
+                    <td class="description last">
+                        <div class="en"><?js= excep.en ?></div>
+                        <div class="ko"><?js= excep.ko ?></div>
+                    </td>
+                <?js } ?>
+            </tr>
+        <?js }); ?>
+    </tbody>
+</table>
