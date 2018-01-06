@@ -1,6 +1,6 @@
 {
   "name": "egjs-jsdoc-template",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "egjs template for JSDoc 3",
   "main": "Gruntfile.js",
   "dependencies": {
